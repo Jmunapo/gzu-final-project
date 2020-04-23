@@ -1,0 +1,123 @@
+<ion-content no-padding class="grid-noise">
+  <section class="main-sec">
+    <form [formGroup]="form" (ngSubmit)="manage(form.value)">
+
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            <ion-item no-padding>
+              <ion-input formControlName="company_name" type="text" placeholder="Company/Institution Name">
+              </ion-input>
+            </ion-item>
+          </ion-card-title>
+
+          <ion-item no-padding>
+            <ion-input formControlName="occupation" type="text" placeholder="Occupation">
+            </ion-input>
+          </ion-item>
+
+          <ion-item no-padding>
+            <ion-textarea formControlName="job_description" placeholder="Job Description/ Duties" required>
+            </ion-textarea>
+          </ion-item>
+
+          <ion-item no-padding>
+            <ion-datetime formControlName="from" placeholder="From (Date)" min="1900" [max]="today"
+              displayFormat="DD MMMM YYYY" pickerFormat="DD MMMM YYYY">
+            </ion-datetime>
+          </ion-item>
+
+          <ion-item no-padding>
+            <ion-datetime formControlName="to" placeholder="To (Date)" min="1900" [max]="today"
+              displayFormat="DD MMMM YYYY" pickerFormat="DD MMMM YYYY">
+            </ion-datetime>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+
+      <div formArrayName="employment">
+        <ion-card [formGroupName]="i" *ngFor="let emp of form.controls.employment.controls; let i = index">
+          <ion-card-content>
+            <ion-card-title>
+              <ion-item no-padding>
+                <ion-input formControlName="company_name" type="text" placeholder="Company/Institution Name">
+                </ion-input>
+              </ion-item>
+            </ion-card-title>
+
+            <ion-item no-padding>
+              <ion-input formControlName="occupation" type="text" placeholder="Occupation">
+              </ion-input>
+            </ion-item>
+
+            <ion-item no-padding>
+              <ion-textarea formControlName="job_description" placeholder="Job Description/ Duties" required>
+              </ion-textarea>
+            </ion-item>
+
+            <ion-item no-padding>
+              <ion-datetime formControlName="from" [(ngModel)]="from_date" placeholder="From (Date)" min="1900"
+                [max]="today" displayFormat="DD MMMM YYYY" pickerFormat="DD MMMM YYYY">
+              </ion-datetime>
+            </ion-item>
+
+            <ion-item no-padding>
+              <ion-datetime formControlName="to" placeholder="To (Date)" [min]="from_date" displayFormat="DD MMMM YYYY"
+                pickerFormat="DD MMMM YYYY">
+              </ion-datetime>
+            </ion-item>
+
+            <span float-right ion-button icon-left clear (click)="removeInputField(i)">
+              <ion-icon name="close"></ion-icon>
+              Remove
+            </span>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <div padding-left padding-right>
+        <p class="add-another" text-right (click)="$event.preventDefault(); addNewInputField();">
+          <i class="lni-plus size-md"></i> &nbsp; ADD ANOTHER
+        </p>
+      </div>
+
+      <ion-col col-12 no-padding>
+        <ion-item>
+          <ion-label>Are you a University Staff or Dependent</ion-label>
+          <ion-select formControlName="university_staff" interface="action-sheet" (ionChange)="isUniStaff($event)">
+            <ion-option value="no">NO</ion-option>
+            <ion-option value="yes">YES</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col formArrayName="unistaff" col-12 no-padding>
+        <div [formGroupName]="i" *ngFor="let staff of form.controls.unistaff.controls; let i = index">
+          <ion-item>
+            <ion-input type="text" formControlName="staff_name" placeholder="Name"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input type="text" formControlName="staff_department" placeholder="Department"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input type="text" formControlName="staff_phone" placeholder="Phone"></ion-input>
+          </ion-item>
+        </div>
+
+      </ion-col>
+
+      <div class="btn-sbmt" text-center *ngIf="!form.valid && !form.dirty" padding-top>
+        <button (click)="$event.preventDefault(); skipEmploy();" ion-button class="full-button-grad">
+          SKIP
+        </button>
+      </div>
+      <div class="btn-sbmt" text-center *ngIf="form.valid || form.dirty" padding-top>
+        <button type="submit" ion-button class="full-button-grad" [disabled]="!form.valid">
+          Submit
+        </button>
+      </div>
+    </form>
+  </section>
+  <div class="footer-seperator"></div>
+</ion-content>

@@ -1,0 +1,47 @@
+<ion-content no-padding class="grid-noise">
+  <form [formGroup]="contactDetails" (ngSubmit)="submit(contactDetails.value)">
+    <ion-item-group>
+      <ion-item-divider>Your Details</ion-item-divider>
+
+      <ion-item>
+        <ion-textarea class="form-controll" formControlName="address" placeholder="Address" required>
+        </ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="tel" placeholder="Phone" formControlName="phone" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="email" placeholder="Email" formControlName="email" required></ion-input>
+      </ion-item>
+
+      <ion-item-divider>Next of Kin's Details</ion-item-divider>
+
+      <ion-item>
+        <ion-input type="text" formControlName="next_of_kin_name" placeholder="Next of Kin's Name" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" formControlName="relationship" placeholder="Relationship" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea formControlName="next_of_kin_address" placeholder="Next of Kin's Address" required></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="next_of_kin_phone" type="tel" placeholder="Next of Kin's Phone" required>
+        </ion-input>
+      </ion-item>
+
+    </ion-item-group>
+
+    <div class="btn-sbmt" text-center padding-top>
+      <button ion-button class="full-button-grad" [disabled]="!contactDetails.valid">
+        Submit
+      </button>
+    </div>
+  </form>
+  <div class="footer-seperator"></div>
+</ion-content>

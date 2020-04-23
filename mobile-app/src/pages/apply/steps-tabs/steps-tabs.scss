@@ -1,0 +1,34 @@
+page-steps-tabs {
+  super-tabs-toolbar {
+    height: 0;
+    * {
+      height: 0;
+    }
+  }
+  .step-toolbar {
+    padding: 0;
+    min-height: 2px;
+  }
+  ion-range {
+    .range-knob-handle {
+      display: none;
+    }
+    .range-slider {
+      height: 2px !important;
+    }
+    .range-bar {
+      top: unset !important;
+    }
+    .range-bar-active {
+      background-color: color($colors, primary) !important;
+    }
+  }
+  .progress-title>.toolbar-title {
+    font-size: 18px;
+    color: #1a1919;
+    font-weight: 400;
+    .step-name {
+      float: right;
+    }
+  }
+}

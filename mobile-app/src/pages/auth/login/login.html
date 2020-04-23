@@ -1,0 +1,39 @@
+<ion-content no-padding class="clearfix pt4 splash-grad">
+  <div class="sm-col-6 md-col-3 lg-col-4 mx-auto">
+    <div class="wrap-login100">
+      <form class="login100-form validate-form" [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)">
+
+        <span class="login100-form-logo">
+          <img src="../../../assets/imgs/portal.png">
+        </span>
+        <span class="login100-form-title p-b-34 p-t-27">
+          Student Portal
+        </span>
+        <div class="wrap-input100 validate-input {{(reg_number_inv? 'animated infinite shake': '')}}">
+          <input #regNumber formControlName="reg_number" (focus)="(focused = true);" (focusout)="focused = false"
+            style="text-transform:capitalize" class="input100" type="text" name="reg_number" placeholder="Reg Number"
+            required>
+          <span class="focus-input100" data-placeholder="&#xf207;"></span>
+        </div>
+        <div class="wrap-input100 pass-input validate-input {{(password_inv? 'animated infinite shake': '')}}">
+          <input #pass formControlName="password" (focus)="(focused = true);" (focusout)="focused = false"
+            class="input100" type="password" name="password" placeholder="Password" required>
+          <span class="focus-input100" data-placeholder="&#xf191;"></span>
+        </div>
+        <div class="container-login100-form-btn p-t-27">
+          <button ion-button block class="login100-form-btn" color="light">
+            LOGIN
+          </button>
+        </div>
+        <p text-center padding-top class="looking_txt">ADMMISSION OPEN FOR AUG 2019</p>
+      </form>
+    </div>
+
+    <div padding-right padding-left>
+      <button ion-button outline block color="secondary" (click)="goToApply()">
+        APPLY
+      </button>
+    </div>
+  </div>
+
+</ion-content>

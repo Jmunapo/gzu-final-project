@@ -1,0 +1,83 @@
+<ion-header no-shadow no-border>
+  <ion-toolbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Welcome {{ auth.user?.reg_number }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openInfo()">
+        <i class="lni-alarm ic-2x" padding-right></i>
+        <!-- <span class="notice mdc-text-red-800">2</span> -->
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding>
+  <div class="clearfix">
+    <section class="main-sec">
+      <ion-list no-lines class="main-list">
+        <button ion-item (click)="p()">
+          <span item-start class="wallets">Tuition Balance</span>
+          <i class="money" [class.mdc-text-red-800]="tuition < 0"> {{ currency }}{{ tuition }}</i>
+        </button>
+        <button ion-item (click)="p()">
+          <span item-start class="wallets">Student Wallet</span>
+          <i class="money"> {{ currency }}{{ wallet }}</i>
+          <ion-note item-end>Top Up <i class="lni-chevron-right"></i></ion-note>
+        </button>
+      </ion-list>
+    </section>
+
+    <section class="quick-action center">
+      <div class="check"></div>
+      <div class="row">
+        <div class="col col-6">
+          <button ion-button class="mdc-bg-purple-900" navPush="FinancePage" [navParams]="token">
+            <i class="lni-invest-monitor icon"></i>
+            <span class="text">
+              Finance
+            </span>
+          </button>
+        </div>
+        <div class="col col-6">
+          <button ion-button class="mdc-bg-lime-900" navPush="NewsEventsPage" [navParams]="token">
+            <ion-icon name="ios-paper-outline" class="icon"></ion-icon>
+            <span class="text">News & Events</span>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-6">
+          <button ion-button class="mdc-bg-blue" navPush="CalendarPage">
+            <i class="lni-calendar icon"></i>
+            <span class="text">
+              Calendar
+            </span>
+          </button>
+        </div>
+        <div class="col col-6">
+          <button ion-button class="mdc-bg-cyan-900" navPush="GalleryPage">
+            <ion-icon name="ios-images-outline" class="icon"></ion-icon>
+            <span class="text">Gallery</span>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-6">
+          <button ion-button class="mdc-bg-red" navPush="EmergencyPage" [navParams]="auth.user">
+            <ion-icon name="ios-medkit-outline" class="icon"></ion-icon>
+            <span class="text">Emergency</span>
+          </button>
+        </div>
+        <div class="col col-6">
+          <button ion-button class="mdc-bg-indigo-900" navPush="ExamTimetablePage" [navParams]="token">
+            <ion-icon name="md-watch" class="icon"></ion-icon>
+            <span class="text">Timetable</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</ion-content>

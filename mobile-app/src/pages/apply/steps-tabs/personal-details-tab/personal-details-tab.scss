@@ -1,0 +1,45 @@
+page-personal-details-tab {
+  .form-select {
+    max-width: 100%;
+  }
+  .text-input-md {
+    margin: 12px 0px;
+  }
+  .datetime-md {
+    padding-left: 0px !important;
+  }
+  .attach-card {
+    .attach-icon {
+      font-size: 4em;
+      color: color($colors, primary);
+    }
+    &.button-md {
+      padding: 0;
+      height: unset;
+      min-height: 140px;
+      border-radius: 4px;
+      .button-inner {
+        display: block;
+      }
+    }
+  }
+  .select-file-input {
+    border: 2px dashed #464646;
+    border-radius: 10px;
+    label {
+      color: #186110;
+      font-weight: bold;
+      bottom: 0;
+      display: block;
+      width: 100%;
+      height: 110px !important;
+      text-align: center;
+    }
+    .file-types-icons {
+      margin-top: 10px;
+      i {
+        font-size: 2.2em;
+      }
+    }
+  }
+}

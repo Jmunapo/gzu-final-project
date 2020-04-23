@@ -1,0 +1,40 @@
+page-register {
+  .scroll-content {
+    margin-bottom: 0px !important;
+  }
+
+  .put-margin {
+    height: 66px !important;
+  }
+
+  ._sitting {
+    margin-top: -12px !important;
+  }
+
+  ._label {
+    margin: 0 !important;
+    text-align: right;
+    padding-right: 15px;
+  }
+
+  ._module_details ion-label {
+    margin-bottom: 0px !important;
+  }
+
+  .grid-noise {
+    ._heading {
+      background-color: #ffff99 !important;
+
+      .item-inner {
+        margin-top: 5px;
+        margin-bottom: 3px;
+      }
+
+      ion-label,
+      span {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

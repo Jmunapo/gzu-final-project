@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-navbar color="red">
+    <ion-title>Emergency</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <form [formGroup]="emergencyForm" (ngSubmit)="submitEmergency(emergencyForm.value)">
+    <ion-list>
+
+      <ion-item>
+        <ion-icon name="ios-contact-outline" item-start></ion-icon>
+        <ion-label>Submit As</ion-label>
+        <ion-select [(ngModel)]="emergency.reporter" name="reporter" formControlName="reporter" interface="popover">
+          <ion-option value="akg">Anonymous</ion-option>
+          <ion-option [value]="user.reg_number">{{user.reg_number}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="ios-albums-outline" item-start></ion-icon>
+        <ion-label>Subject</ion-label>
+        <ion-select [(ngModel)]="emergency.subject" name="subject" formControlName="subject" interface="popover"
+          (ionChange)="subjChange($event)">
+          <ion-option *ngFor="let sub of subjects" [value]="sub">{{sub}}</ion-option>
+          <ion-option value="other">Other</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="ios-warning-outline" item-start></ion-icon>
+        <ion-label>Urgency</ion-label>
+        <ion-select [(ngModel)]="emergency.urgency" name="urgency" formControlName="urgency" interface="popover">
+          <ion-option value="1">Low</ion-option>
+          <ion-option value="2">Medium</ion-option>
+          <ion-option value="3">High</ion-option>
+        </ion-select>
+      </ion-item>
+
+
+      <ion-item class="input-list" (click)="addLocation('current')">
+        <ion-icon name="ios-pin-outline" item-start></ion-icon>
+        <ion-label floating>Address</ion-label>
+        <ion-input [(ngModel)]="emergency.address" name="address" formControlName="address" type="text" disabled>
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="input-list">
+        <ion-icon name="ios-call-outline" item-start></ion-icon>
+        <ion-label floating>Phone</ion-label>
+        <ion-input [(ngModel)]="emergency.phone" name="phone" formControlName="phone" type="tel"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="ios-create-outline" item-start></ion-icon>
+        <ion-label floating>Enter your emergency</ion-label>
+        <ion-textarea [(ngModel)]="emergency.description" name="description" formControlName="description"
+          autocomplete="on" autocorrect="on">
+        </ion-textarea>
+      </ion-item>
+
+
+    </ion-list>
+    <div class="center">
+      <button icon-left ion-button round color="red" class="send_submit" [disabled]="!emergencyForm.valid">
+        <ion-icon name="ios-send-outline" item-start></ion-icon> Send
+      </button>
+    </div>
+  </form>
+</ion-content>

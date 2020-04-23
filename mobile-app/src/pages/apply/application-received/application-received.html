@@ -1,0 +1,49 @@
+<ion-content padding class="grid-noise">
+  <ion-card>
+    <ion-card-header>
+      Application Received
+    </ion-card-header>
+    <ion-card-content>
+      <ion-note>
+        What's Next?
+      </ion-note>
+      <p>
+        We will verify and send you the response via phone, email and notification on this app,
+        in the mean time, you can like our facebook page and follow us on twitter
+      </p>
+    </ion-card-content>
+
+    <ion-row class="cardfooter">
+      <ion-col>
+        <h4 padding-left padding-right><strong> Enable to receive a notification on your phone</strong></h4>
+        <ion-item>
+          <ion-label>Receive response in App</ion-label>
+          <ion-toggle checked="false"></ion-toggle>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <a ion-button block icon-left class="fb" rounded target="_blank"
+          href="https://www.facebook.com/Great-Zimbabwe-University-157525957668677/">
+          <ion-icon name="logo-facebook"></ion-icon>
+          Like GZU
+        </a>
+      </ion-col>
+      <ion-col col-6>
+        <a ion-button block icon-left class="twitter" rounded target="_blank" href="https://twitter.com/great_zimuniv">
+          <ion-icon name="logo-twitter"></ion-icon>Follow GZU
+        </a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="center">
+    <button ion-button round outline color="primary" (click)="goLogin()">
+      Go to Login
+    </button>
+  </div>
+</ion-content>

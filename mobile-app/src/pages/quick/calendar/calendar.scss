@@ -1,0 +1,26 @@
+page-calendar {
+  .monthview-current[_ngcontent-c1] {
+    background-color: #cdd8e8;
+  }
+
+  .monthview-selected[_ngcontent-c1] {
+    background-color: color($colors, primary);
+  }
+
+  td[tappable],
+  th[_ngcontent-c1] {
+    color: color($colors, primary);
+  }
+
+  td.monthview-primary-with-event {
+    background-color: #c5b940 !important;
+  }
+
+  .monthview-container {
+    height: unset !important;
+  }
+
+  ion-list.event-detail-container.list.list-md {
+    display: none !important;
+  }
+}

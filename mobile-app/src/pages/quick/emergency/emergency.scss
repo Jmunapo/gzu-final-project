@@ -1,0 +1,62 @@
+page-emergency {
+  ion-item {
+    position: relative;
+    padding-right: 16px;
+    background-color: transparent;
+
+    input[disabled],
+    .text-input[disabled] {
+      opacity: 1;
+    }
+
+    .item-inner {
+      margin-left: 5px !important;
+      margin-right: 5px !important;
+    }
+  }
+
+  ion-item.item-label-floating .text-input,
+  .datetime-text {
+    margin-left: 32px;
+    width: calc(100% - 32px);
+  }
+
+  ion-item.item-input ion-icon,
+  ion-item.item-datetime ion-icon,
+  ion-item.item-select ion-icon {
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 0;
+    left: 23px;
+    color: #7f7f7f;
+    font-size: 24px;
+    min-width: 0 !important;
+    text-align: left !important;
+
+  }
+
+
+  ion-item.item-input ion-label[floating],
+  ion-item.item-select ion-label,
+  ion-item.item-datetime ion-label {
+    padding-left: 32px;
+  }
+
+  ion-item.item-select {
+    padding-top: 16px;
+  }
+
+  ion-item.input-has-focus ion-label[floating],
+  ion-item.input-has-value ion-label[floating] {
+    transform: translate3d(-25.6px, 0, 0) scale(0.8);
+  }
+
+  button.send_submit {
+    border-radius: 7px !important;
+    height: 40px !important;
+    font-size: 1.1em !important;
+    font-weight: 300;
+  }
+
+}

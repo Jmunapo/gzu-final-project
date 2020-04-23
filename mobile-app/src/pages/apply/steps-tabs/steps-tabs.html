@@ -1,0 +1,34 @@
+<ion-header no-border>
+
+  <ion-navbar #navbar>
+
+    <ion-title class="progress-title">
+      {{tabtitles[steps.curr - 1]}}
+    </ion-title>
+
+  </ion-navbar>
+  <ion-toolbar class="step-toolbar">
+    <ion-range disabled min="0" [max]="steps.max" pin="false" [(ngModel)]="steps.curr" color="tertiary" no-padding>
+    </ion-range>
+  </ion-toolbar>
+
+</ion-header>
+
+<super-tabs showToolbar="false">
+  <super-tab *ngFor="let tab of tabs" [root]="tab"></super-tab>
+</super-tabs>
+
+<ion-fab right middle>
+  <button (click)="goToPrevStep()" [disabled]="steps.curr === 1" ion-fab color="primary">
+    <ion-icon name="arrow-back"></ion-icon>
+  </button>
+</ion-fab>
+
+
+<!-- <ion-footer text-center no-border>
+  <ion-toolbar transparent>
+    <button ion-button class="full-button-grad" (click)="goToNextStep()" [disabled]="stepError">
+      Next
+    </button>
+  </ion-toolbar>
+</ion-footer> -->

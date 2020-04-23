@@ -1,0 +1,77 @@
+<ion-content padding class="grid-noise">
+  <ion-fab top right class="closeFab">
+    <button ion-fab (click)="close()" mini color="danger">
+      <ion-icon name="ios-close-outline"></ion-icon>
+    </button>
+  </ion-fab>
+  <h5>{{prog.programme_name}}</h5>
+  <hr class="info-hr">
+
+  <ion-item-group>
+    <ion-item-divider color="light">
+      Duration
+    </ion-item-divider>
+  </ion-item-group>
+  <ion-grid>
+    <ion-row *ngIf="prog.conventional_duration">
+      <ion-col col-6>
+        <p>Conventional</p>
+      </ion-col>
+      <ion-col col-6>
+        <p>{{prog.conventional_duration}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="prog.block_duration">
+      <ion-col col-6>
+        <p>Block Release</p>
+      </ion-col>
+      <ion-col col-6>
+        <p>{{prog.block_duration}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-item-group>
+    <ion-item-divider color="light">
+      Entry Requirements
+    </ion-item-divider>
+  </ion-item-group>
+  <ion-grid>
+    <ion-row *ngIf="prog.normal_entry_requirements">
+      <ion-col col-3>
+        <p>Normal Entry</p>
+      </ion-col>
+      <ion-col col-9>
+        <p *ngFor="let s of prog.normal_entry_requirements.split('\n')">{{s}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="prog.mature_entry_requirements">
+      <ion-col col-3>
+        <p>Mature Entry</p>
+      </ion-col>
+      <ion-col col-9>
+        <p *ngFor="let s of prog.mature_entry_requirements.split('\n')">{{s}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="prog.special_entry_requirements">
+      <ion-col col-3>
+        <p>Special Entry</p>
+      </ion-col>
+      <ion-col col-9>
+        <p *ngFor="let s of prog.special_entry_requirements.split('\n')">{{s}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="prog.notes">
+      <ion-col col-3>
+        <p>Notes</p>
+      </ion-col>
+      <ion-col col-9>
+        <p *ngFor="let s of prog.notes.split('\n')">{{s}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

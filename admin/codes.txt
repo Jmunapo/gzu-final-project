@@ -1,0 +1,10 @@
+OneSignal::async()->sendNotificationUsingTags(
+      "Some Message",
+      array(
+          ["field" => "email", "relation" => "=", "value" => "jmunapo@gmail.com"],
+      ),
+      $url = null,
+      $data = null,
+      $buttons = null,
+      $schedule = null
+  );

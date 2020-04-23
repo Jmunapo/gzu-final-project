@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding class="grid-noise">
+  <button ion-item class="quick-set" (click)="notifyMe()">
+    <ion-icon *ngIf="settings.ring_mode" name="ios-notifications-outline" item-start></ion-icon>
+    <ion-icon *ngIf="!settings.ring_mode" name="ios-notifications-off-outline" item-start></ion-icon>
+    <div>Notifications</div>
+  </button>
+
+  <button ion-item class="quick-set" (click)="faq()">
+    <ion-icon name="ios-help-circle-outline" item-start></ion-icon>
+    <div>Application FAQ</div>
+  </button>
+
+  <!-- <ion-item-group class="add-options">
+    <ion-item-divider color="light">Additional Options</ion-item-divider>
+    <button ion-item (click)="open()">
+      <ion-icon name="ios-card-outline" item-start></ion-icon>
+      Payment Methods
+    </button>
+    <button ion-item (click)="open()">
+      <ion-icon name="ios-paper-outline" item-start></ion-icon>
+      Reports
+    </button>
+  </ion-item-group> -->
+
+  <!-- <hr>
+  <ion-list class="quick-set" *ngIf="!rated">
+    <button ion-item (click)="rateApp()">
+      <ion-icon name="ios-star-half-outline" item-start></ion-icon>
+      Rate
+    </button>
+  </ion-list> -->
+</ion-content>

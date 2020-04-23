@@ -1,0 +1,43 @@
+<ion-content no-padding class="grid-noise">
+  <form [formGroup]="refreeDetails" (ngSubmit)="submit(refreeDetails.value)">
+
+
+    <ion-item-group>
+      <ion-item-divider>Referee One</ion-item-divider>
+      <ion-item>
+        <ion-input type="text" placeholder="Name" formControlName="refree_one_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea placeholder="Address" formControlName="refree_one_address">
+        </ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="tel" placeholder="Phone" formControlName="refree_one_phone"></ion-input>
+      </ion-item>
+
+      <ion-item-divider>Referee Two</ion-item-divider>
+
+      <ion-item>
+        <ion-input type="text" placeholder="Name" formControlName="refree_two_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea placeholder="Address" formControlName="refree_two_address">
+        </ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="tel" placeholder="Phone" formControlName="refree_two_phone"></ion-input>
+      </ion-item>
+    </ion-item-group>
+
+    <div class="btn-sbmt" text-center padding-top>
+      <button ion-button class="full-button-grad" [disabled]="!refreeDetails.valid">
+        Submit
+      </button>
+    </div>
+  </form>
+  <div class="footer-seperator"></div>
+</ion-content>

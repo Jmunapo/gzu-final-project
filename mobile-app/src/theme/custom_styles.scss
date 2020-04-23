@@ -1,0 +1,106 @@
+/**
+*@ Toaster
+*
+**/
+
+.error-toaster {
+  text-align: center;
+
+  .toast-wrapper {
+    max-width: 75% !important;
+    border-radius: 50px;
+    text-align: center;
+    background: #e9b5b2 !important;
+    border: 2px solid #f44336;
+
+    .toast-message {
+      font-size: 1.6rem;
+      color: #f44336;
+      padding: 8px 10px 7px;
+    }
+  }
+
+  .toast-bottom {
+    bottom: 65px !important;
+  }
+}
+
+.success-toaster {
+  text-align: center;
+
+  .toast-wrapper {
+    max-width: 75% !important;
+    border-radius: 50px;
+    text-align: center;
+    background: #b1dac0 !important;
+    border: 2px solid #0b4622;
+
+    .toast-message {
+      font-size: 1.6rem;
+      color: #0b4622;
+      padding: 8px 10px 7px;
+    }
+  }
+
+  .toast-top {
+    top: 55px !important;
+  }
+}
+
+.info-toaster {
+  text-align: center;
+
+  .toast-wrapper {
+    max-width: 75% !important;
+    border-radius: 50px;
+    text-align: center;
+    background: #c5c48a !important;
+    border: 2px solid #616015;
+
+    .toast-message {
+      font-size: 1.6rem;
+      color: #616015;
+      padding: 8px 10px 7px;
+    }
+  }
+
+  .toast-bottom {
+    bottom: 65px !important;
+  }
+}
+
+
+/**
+*@@ Colors
+*
+*/
+
+.text-secondary {
+  color: color($colors, secondary) !important;
+}
+
+.text-danger {
+  color: color($colors, danger) !important;
+}
+
+.bg-primary {
+  background-color: color($colors, primary) !important;
+}
+
+.bg-secondary {
+  background-color: color($colors, secondary) !important;
+}
+
+.text-primary {
+  color: color($colors, primary) !important;
+}
+
+.item-divider-md {
+  background-color: #FFFF99 !important;
+  border-bottom: 1px solid #bce8f1 !important;
+}
+
+.ic-2x {
+  font-weight: 500;
+  font-size: 1.4em;
+}

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Contact Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="grid-noise">
+  <div class="profile-back">
+    <ion-item-group>
+      <ion-item no-lines>
+        <p item-left> <b>Home Address:</b></p>
+        <p item-right>{{ profile.address }}</p>
+      </ion-item>
+      <ion-item no-lines>
+        <p item-left> <b>Phone Number:</b></p>
+        <p item-right>{{ profile.phone }}</p>
+      </ion-item>
+      <ion-item no-lines>
+        <p item-left> <b>Next Of Kin Names:</b></p>
+        <p item-right>{{ profile.next_of_kin_name }}</p>
+      </ion-item>
+
+      <ion-item no-lines>
+        <p item-left> <b>Next Of Kin Address:</b></p>
+        <p item-right>{{ profile.next_of_kin_address }}</p>
+      </ion-item>
+      <ion-item no-lines>
+        <p item-left> <b>Next Of Kin Phone Number:</b></p>
+        <p item-right>{{ profile.next_of_kin_phone }}</p>
+      </ion-item>
+    </ion-item-group>
+  </div>
+</ion-content>

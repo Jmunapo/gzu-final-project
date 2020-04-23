@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Academic Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="grid-noise">
+  <div class="profile-back">
+    <ion-item-group>
+      <ion-item no-lines>
+        <p item-left> <b>Registration Number:</b></p>
+        <p item-right>{{ profile.reg_number }}</p>
+      </ion-item>
+      <ion-item no-lines>
+        <p item-left> <b>Programme:</b></p>
+        <p item-right>{{ profile.programme_name }}</p>
+      </ion-item>
+      <ion-item no-lines>
+        <p item-left> <b>Graduate Level:</b></p>
+        <p item-right>{{ profile.graduate_level }}</p>
+      </ion-item>
+      <ion-item no-lines>
+        <p item-left> <b>Intaketype:</b></p>
+        <p item-right>{{ profile.intake_type }}</p>
+      </ion-item>
+    </ion-item-group>
+  </div>
+</ion-content>

@@ -1,0 +1,60 @@
+page-academic-history-tab {
+  .datetime-md {
+    padding-left: 7px !important;
+  }
+
+  .ctrlLevel {
+    margin: 0 !important;
+    text-align: right !important;
+    width: 80px !important;
+
+    * {
+      margin: 0 !important;
+    }
+
+    input {
+      width: 80px !important;
+    }
+  }
+
+  .contrlLevl {
+    .item-inner {
+      border-bottom-color: unset !important;
+      -webkit-box-shadow: unset !important;
+      box-shadow: unset !important;
+    }
+  }
+
+  .add-another {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: color($colors, primary);
+  }
+
+  .select-file-input {
+    border: 2px dashed #464646;
+    border-radius: 10px;
+
+    label {
+      color: #186110;
+      font-weight: bold;
+      bottom: 0;
+      display: block;
+      width: 100%;
+      height: 110px !important;
+      text-align: center;
+    }
+
+    .file-types-icons {
+      margin-top: 10px;
+
+      i {
+        font-size: 2.2em;
+      }
+    }
+  }
+
+  .date-field {
+    display: none;
+  }
+}

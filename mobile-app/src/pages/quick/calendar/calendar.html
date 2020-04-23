@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="blue">
+    <ion-title>Calendar - {{ viewTitle }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding class="grid-noise">
+  <page-loader [fill]="fill" *ngIf="!loaded"></page-loader>
+
+  <div class="clearfix feature-not-available" *ngIf="loaded">
+    <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
+      (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)" step="30"
+      (onCurrentDateChanged)="onCurrentDateChanged($event)" (onRangeChanged)="reloadSource(startTime, endTime)"
+      (onTimeSelected)="onTimeSelected($event)" class="calendar">
+    </calendar>
+    <hr>
+    <section class="events-list">
+      <h3 text-center *ngIf="!events?.length">No Events</h3>
+      <ion-list *ngIf="events?.length">
+        <button ion-item *ngFor="let event of events" (click)="onEventSelected(event)">
+          <h2 class="primary title">{{ event.title }}</h2>
+          <h4>{{ event.place }}</h4>
+          <span class="h3">{{ humanDate(event.startTime) }}</span>
+          <ion-note item-end>View <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+          </ion-note>
+        </button>
+      </ion-list>
+    </section>
+  </div>
+</ion-content>

@@ -1,0 +1,131 @@
+<ion-content no-padding class="grid-noise" scroll="false">
+  <div #panel>
+    <ion-searchbar debounce="500" placeholder="Start typing programme" (ionInput)="getProgrammes($event)" #searchPanel>
+    </ion-searchbar>
+  </div>
+
+  <ion-scroll scrollY="true" class="scrll-content" search-vanish [searchElem]="panel" [scrollContent]="scrollContent"
+    #hideScroll>
+    <div class="scrll-child" #scrollContent>
+      <ion-item-group>
+        <ion-item-divider color="light">
+          Select 3 programmes of your choice
+        </ion-item-divider>
+      </ion-item-group>
+
+      <div class="programme-div" *ngFor="let programme of filteredProgrammes">
+
+        <ion-card [hidden]='selectedPrgr === 3 && !programme.selctd'>
+          <div class="prog-details" padding>
+            <h3>{{programme.parts.field}}</h3>
+            <h4>{{programme.parts.level}}</h4>
+            <p>{{programme.parts.name}}</p>
+            <ion-note class="prog-yrs" margin-top>
+              <span *ngIf="programme.conventional_duration">
+                Convetional <ion-badge item-start>{{programme.conventional_duration}} </ion-badge>
+              </span>
+              <span *ngIf="programme.block_duration">
+                Block Release <ion-badge item-end>{{programme.block_duration}}</ion-badge>
+              </span>
+            </ion-note>
+          </div>
+
+          <ion-row no-padding>
+            <ion-col col-6>
+              <ion-item>
+                <ion-label>Select</ion-label>
+                <ion-checkbox color="primary" [checked]="programme.selctd"
+                  [disabled]='selectedPrgr === 3 && !programme.selctd'
+                  (ionChange)="programme.selctd = !programme.selctd; selectProgramme(programme);">
+                </ion-checkbox>
+              </ion-item>
+            </ion-col>
+            <ion-col text-center col-6>
+              <button ion-button clear color="dark" icon-end (click)="infoModalShow(programme)">
+                More Info
+                <ion-icon name='ios-arrow-forward-outline'></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </div>
+    </div>
+  </ion-scroll>
+
+  <section *ngIf="selectedPrgr === 3 && !selectingProg" class="submitSection">
+    <div class="choices">
+      <ion-item-group>
+        <ion-item-divider color="light">
+          Programme Choices
+          <button item-end clear ion-button (click)="reSelectProgramme();">
+            ReSelect
+          </button>
+        </ion-item-divider>
+        <p padding-right padding-left *ngFor="let sp of selectedProgrammesArray; index as i">
+          <strong padding-right>{{i+1}}</strong> {{sp.programme_name}}
+        </p>
+      </ion-item-group>
+    </div>
+
+    <form [formGroup]="programmeChoices" (ngSubmit)="submitProgrammeChoices(programmeChoices.value)">
+      <div class="programmes-arry" *ngIf="selectedProgrammesArray.length">
+        <input formControlName="first_choice_programme" type="text" hidden>
+        <input formControlName="second_choice_programme" type="text" hidden>
+        <input formControlName="third_choice_programme" type="text" hidden>
+      </div>
+
+
+
+
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12>
+            <ion-item>
+              <ion-label>Select Entry Type</ion-label>
+              <ion-select formControlName="entry_type" class="prog-choice-selct" interface="popover">
+                <ion-option value="normal">Normal Entry</ion-option>
+                <ion-option value="special">Special Entry</ion-option>
+                <ion-option value="mature">Mature Entry</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col col-12>
+            <ion-item>
+              <ion-label>Select Intake Type</ion-label>
+              <ion-select formControlName="intake_type" class="prog-choice-selct" interface="popover">
+                <ion-option value="full time">Full Time</ion-option>
+                <ion-option value="parallel">Parallel</ion-option>
+                <ion-option value="block release">Block Release</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+
+          <ion-col col-12>
+            <ion-item>
+              <ion-label>Sponsorship</ion-label>
+              <ion-select formControlName="sponsorship" class="prog-choice-selct" interface="popover"
+                (ionChange)="changeSponsor($event)">
+                <ion-option value="government">Government</ion-option>
+                <ion-option value="self">Self</ion-option>
+                <ion-option value="other">Other</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col col-12 *ngIf="sponsorOtherShow">
+            <ion-item>
+              <ion-input type="text" placeholder="Specify Sponsor"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <div class="btn-sbmt" text-center>
+        <button ion-button class="full-button-grad" [disabled]="!programmeChoices.valid">
+          Submit
+        </button>
+      </div>
+    </form>
+  </section>
+
+
+</ion-content>

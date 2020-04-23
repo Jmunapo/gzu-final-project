@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Results</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding class="grid-noise">
+  <page-loader fill="#009900" *ngIf="!loaded"></page-loader>
+
+  <div class="no-results" *ngIf="loaded">
+    <p text-center>No published results found</p>
+  </div>
+
+  <!-- <section class="results-list" *ngIf="loaded">
+    <ion-card *ngFor="let level of ['1.1']">
+      <ion-card-header>
+        Level {{ level }} results
+      </ion-card-header>
+
+      <ion-list>
+        <ion-item *ngFor="let mod of [1,2,3,4,5,6]" lines>
+          <div item-start>
+            <h2>Course Code</h2>
+            <h3>Grade:</h3>
+            <h3>Decision:</h3>
+          </div>
+          <p>Course Description</p>
+          <p>2.1</p>
+          <p>Pass</p>
+        </ion-item>
+
+      </ion-list>
+    </ion-card>
+  </section> -->
+</ion-content>

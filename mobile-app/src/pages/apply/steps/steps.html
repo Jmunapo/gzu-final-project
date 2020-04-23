@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="primary" class="grad-toolbar">
+    <ion-title>Requirements</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content no-padding class="grid-noise">
+  <div class="alert alert-warning alert-dismissible alert_info">
+    Make sure you have the following documents in your device to complete this action.
+    Click Go to begin
+  </div>
+
+  <ion-card *ngFor="let req of requirements">
+    <ion-item>
+      <ion-icon class="req-icon" item-start [name]="req.icon.name" *ngIf="req.icon.lib === 'ionicons'"></ion-icon>
+      <i item-start [class]="req.icon.name + ' req-icon'" *ngIf="req.icon.lib === 'lineicons'"></i>
+      <i item-start [class]="req.icon.name + ' zmdi zmdi-hc-3x req-icon'" *ngIf="req.icon.lib === 'zmdi'"></i>
+      <p>{{ req.name }}</p>
+    </ion-item>
+    <ion-card-content>
+      <p>{{ req.descr }}</p>
+    </ion-card-content>
+  </ion-card>
+  <div class="put-margin"></div>
+</ion-content>
+
+<ion-footer no-padding no-border no-shadow text-center>
+  <ion-toolbar transparent>
+    <button ion-button class="full-button-grad" (click)="beginApply()">
+      GO
+    </button>
+  </ion-toolbar>
+
+</ion-footer>

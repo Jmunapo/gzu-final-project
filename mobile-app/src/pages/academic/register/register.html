@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Registration</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding class="grid-noise">
+  <page-loader [fill]="fill" *ngIf="!loaded"></page-loader>
+
+  <div class="clearfix feature-not-available" *ngIf="loaded && has_error" padding>
+    <div class="not-available center">
+      <h2 class="h2">Connection Error</h2>
+      <img class="block mx-auto" src="assets/icon/ethernet.svg" width="300">
+      <span class="p" padding-top>
+        Opps! Your connection seems off...
+      </span>
+    </div>
+  </div>
+
+  <div class="main" *ngIf="!has_error">
+    <section *ngIf="loaded && !has_registered">
+      <ion-item-divider class="text-primary _heading" color="secondary">
+        {{ curriculumCourses.length }} Modules On Offer
+        <span item-end>
+          <button ion-button small clear (click)="registerAll()" icon-right>
+            Register All
+            <i class="lni-chevron-right"></i>
+          </button>
+        </span>
+      </ion-item-divider>
+      <div class="main-list">
+        <ion-card *ngFor="let curr of curriculumCourses">
+          <ion-item class="_module_details" text-wrap>
+            <h2>{{ curr.course_code }}</h2>
+            <p no-padding>{{ curr.course_name }}</p>
+            <ion-note item-end class="_sitting">{{ curr.sitting }}</ion-note>
+          </ion-item>
+          <ion-item class="action_item">
+            <ion-label class="_label">Register</ion-label>
+            <ion-checkbox (ionChange)="registerModule($event, curr)" item-end [checked]="curr.registered">
+            </ion-checkbox>
+          </ion-item>
+        </ion-card>
+
+        <div class="put-margin"></div>
+      </div>
+    </section>
+
+    <section *ngIf="loaded && has_registered">
+      <ion-item-divider class="text-primary _heading" color="secondary">
+        {{ registeredCourses.length }} Module{{ (registeredCourses.length === 1)? "": "s" }} registered
+        <span item-end>
+          <button ion-button small clear (click)="has_registered = false;" icon-right>
+            Re-register
+            <i class="lni-reload"></i>
+          </button>
+        </span>
+      </ion-item-divider>
+
+      <div class="main-list">
+        <ion-list>
+          <ion-item *ngFor="let course of registeredCourses" text-wrap>
+            <h2>{{ course.course_code }}</h2>
+            <p no-padding>{{ course.course_name }}</p>
+          </ion-item>
+        </ion-list>
+      </div>
+    </section>
+  </div>
+</ion-content>
+
+<ion-footer no-padding no-border no-shadow text-center *ngIf="loaded && !has_registered && !has_error">
+  <ion-toolbar transparent>
+    <button ion-button class="full-button-grad" (click)="confirmRegistration()">
+      Confirm Registration
+    </button>
+  </ion-toolbar>
+
+</ion-footer>

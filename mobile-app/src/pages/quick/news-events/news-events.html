@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="lime">
+    <ion-title>News</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding class="grid-noise">
+  <page-loader [fill]="fill" *ngIf="!loaded"></page-loader>
+
+  <div class="clearfix feature-not-available" *ngIf="loaded && !news.length" padding>
+    <div class="not-available center">
+      <h2 class="h2">Nothing to show yet</h2>
+    </div>
+  </div>
+  <section *ngIf="loaded && news.length">
+    <ion-card *ngFor="let n of news">
+      <div [class.img-div]="n.img" [style.backgroundImage]="'url('+n.img+')'"></div>
+      <ion-card-content no-padding padding-left padding-right>
+        <h2 padding-top>{{ n.title }}</h2>
+      </ion-card-content>
+
+      <ion-item>
+        <div [innerHTML]="n.content"></div>
+        <ion-note>by {{ n.author }} on {{ n.published }}</ion-note>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <button color="lime" ion-button icon-left clear (click)="favoritePost(n)">
+            <ion-icon name='ios-heart'></ion-icon>
+            Favorite
+          </button>
+        </ion-col>
+        <ion-col align-self-center text-center>
+          <button color="lime" ion-button icon-start clear small (click)="readNews(n)">
+            <ion-icon name="ios-eye-outline"></ion-icon>
+            <div>Read</div>
+          </button>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+  </section>
+</ion-content>

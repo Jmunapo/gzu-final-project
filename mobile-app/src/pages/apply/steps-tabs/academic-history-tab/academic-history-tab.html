@@ -1,0 +1,160 @@
+<ion-content no-padding class="grid-noise">
+  <section class="main-sec">
+    <form [formGroup]="form" (ngSubmit)="manage(form.value)">
+
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            <ion-grid no-padding>
+              <ion-row>
+                <ion-col col-8>
+                  <ion-item no-padding>
+                    <ion-input text-uppercase formControlName="subject" type="text" disabled>
+                    </ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-4>
+                  <ion-item no-padding class="contrlLevl">
+                    <ion-input class="ctrlLevel" item-end formControlName="level" disabled></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-title>
+
+
+          <ion-item no-padding class="date-field">
+            <ion-datetime formControlName="passing_year" placeholder="Month/Year of Passing" min="1900" [max]="today"
+              displayFormat="MMM YYYY" pickerFormat="MMMM YYYY">
+            </ion-datetime>
+          </ion-item>
+          <ion-item no-padding>
+            <ion-input type="text" formControlName="exam_board" placeholder="Examination board e.g ZIMSEC"></ion-input>
+          </ion-item>
+          <ion-item no-padding>
+            <ion-input type="text" formControlName="award_grade" placeholder="Grade"></ion-input>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+
+      <div formArrayName="subjects">
+        <ion-card [formGroupName]="i" *ngFor="let sub of form.controls.subjects.controls; let i = index">
+          <ion-card-title>
+            <ion-grid no-padding>
+              <ion-row>
+                <ion-col col-8>
+                  <ion-item no-padding>
+                    <ion-input text-uppercase formControlName="subject" type="text" placeholder="Subject Name">
+                    </ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-4>
+                  <ion-item no-padding class="contrlLevl">
+                    <ion-input class="ctrlLevel" item-end formControlName="level" disabled></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-title>
+
+          <ion-item no-padding class="date-field">
+            <ion-datetime class="date-field" formControlName="passing_year" placeholder="Month/Year of Passing"
+              min="1900" [max]="today" displayFormat="MMM YYYY" pickerFormat="MMMM YYYY">
+            </ion-datetime>
+          </ion-item>
+          <ion-item no-padding>
+            <ion-input type="text" formControlName="exam_board" placeholder="Examination board e.g ZIMSEC"></ion-input>
+          </ion-item>
+          <ion-item no-padding>
+            <ion-input type="text" formControlName="award_grade" placeholder="Grade"></ion-input>
+          </ion-item>
+          <span float-right ion-button icon-left clear *ngIf="form.controls.subjects.length > 1"
+            (click)="removeInputField(i)">
+            <ion-icon name="close"></ion-icon>
+            Remove
+          </span>
+        </ion-card>
+      </div>
+
+      <div formArrayName="degree">
+        <ion-card [formGroupName]="i" *ngFor="let sub of form.controls.degree.controls; let i = index">
+          <ion-card-title>
+            <ion-grid no-padding>
+              <ion-row>
+                <ion-col col-8>
+                  <ion-item no-padding>
+                    <ion-input text-uppercase formControlName="programme_name" type="text" placeholder="PROGRAMME NAME">
+                    </ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-4>
+                  <ion-item no-padding class="contrlLevl">
+                    <ion-input class="ctrlLevel" item-end formControlName="level" disabled></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-title>
+
+          <ion-item no-padding class="date-field">
+            <ion-datetime formControlName="award_date" placeholder="Date of Award" min="1900" [max]="today"
+              displayFormat="DD MMMM YYYY" pickerFormat="DD MMMM YYYY">
+            </ion-datetime>
+          </ion-item>
+          <ion-item no-padding>
+            <ion-input type="text" formControlName="inistitution" placeholder="Name of Institution"></ion-input>
+          </ion-item>
+          <ion-item no-padding>
+            <ion-input type="text" formControlName="award_class" placeholder="DEGREE CLASS"></ion-input>
+          </ion-item>
+          <ion-item no-padding>
+            <ion-textarea formControlName="inistitution_address" placeholder="Inistitution Address" required>
+            </ion-textarea>
+          </ion-item>
+          <ion-item no-padding>
+            <ion-input type="text" formControlName="inistitution_phone" placeholder="Inistitution Phone"></ion-input>
+          </ion-item>
+          <span float-right ion-button icon-left clear (click)="removeInputField(i, 'degree')">
+            <ion-icon name="close"></ion-icon>
+            Remove
+          </span>
+        </ion-card>
+      </div>
+
+
+
+      <div padding-left padding-right>
+        <p class="add-another" text-right (click)="$event.preventDefault(); addNewInputField();">
+          <i class="lni-plus size-md"></i> &nbsp; ADD ANOTHER RESULT
+        </p>
+      </div>
+
+
+
+      <div class="select-file-input" margin>
+        <label for="academic_certificates">
+          <span class="file-types-icons">
+            <i class="zmdi zmdi-file-text mdc-text-light-blue"></i>
+            <i class="zmdi zmdi-collection-pdf mdc-text-red-700"></i>
+          </span>
+
+          <p [hidden]="dom_vars.academic_certificates"><i class="lni-add-file size-md"></i> &nbsp; Attach File with your
+            Academic Certificates</p>
+          <p [hidden]="!dom_vars.academic_certificates">Certificates: &nbsp; {{dom_vars.academic_certificates}} </p>
+
+        </label>
+        <input type="file" name="academic_certificates" id="academic_certificates" hidden #certFile
+          (change)="fileUpload($event, 'academic_certificates');" formControlName="academic_certificates">
+      </div>
+
+      <div class="btn-sbmt" text-center>
+        <button type="submit" ion-button class="full-button-grad"
+          [disabled]="!form.valid || !dom_vars.academic_certificates">
+          Submit
+        </button>
+      </div>
+
+    </form>
+  </section>
+  <div class="footer-seperator"></div>
+</ion-content>

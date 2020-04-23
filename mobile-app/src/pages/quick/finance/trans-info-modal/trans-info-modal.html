@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="viewCtrl.dismiss()" class="my-style-for-modal">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Transaction</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="share()" class="more-icon">
+        <ion-icon name="md-share"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="grid-noise">
+  <ion-card no-padding>
+    <ion-card-header>
+      <h1>Transaction Details</h1>
+
+    </ion-card-header>
+
+    <ion-list>
+      <ion-item>
+        {{ transaction.payment_type }} : {{ transaction.bank_refrence }}
+      </ion-item>
+
+      <ion-item>
+        Refrence {{ transaction.refrence_number }}
+      </ion-item>
+
+      <ion-item>
+        {{ transaction.payment_type }}
+      </ion-item>
+
+      <ion-item>
+        Amount : {{ transaction.amount }}
+      </ion-item>
+
+      <ion-item>
+        Status : {{ transaction.status }}
+      </ion-item>
+
+    </ion-list>
+  </ion-card>
+</ion-content>

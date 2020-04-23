@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{ post.title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="grid-noise">
+  <div class="clearfix">
+    <section class="main-sec" [innerHTML]="post.content"></section>
+  </div>
+</ion-content>

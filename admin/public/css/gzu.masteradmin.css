@@ -1,0 +1,59 @@
+.dtp-picker-days>tbody>tr>td {
+  background: #ffffff !important;
+}
+
+.divider.add-new {
+  border: grey solid 0.5px;
+}
+
+.modal-card-box {
+  margin-bottom: 0px;
+}
+
+.modal-card-box:hover {
+  -webkit-transform: unset;
+  transform: unset;
+  box-shadow: unset;
+  -moz-box-shadow: unset;
+  -webkit-box-shadow: unset;
+}
+
+.dtp {
+  z-index: 10055;
+}
+
+.mdl-spiner-active {
+  display: none !important;
+}
+
+.swal2-container {
+  z-index: 10055 !important;
+}
+
+#csv_template {
+  cursor: pointer !important;
+}
+
+/* Exam titmetable page */
+
+#date-input {
+  color: #ffffff;
+  background-color: #1b2432;
+  border: 1px solid #ccc;
+  height: 34px;
+  padding-left: 8px;
+  border-radius: 5px;
+}
+
+#selitemIcon .select2-selection #select2-selitemIcon-container {
+  color: #ffffff !important;
+}
+
+.select2-results__option {
+  color: #1b2432;
+}
+
+.duration {
+  height: 34px;
+  background-color: #1b2432 !important;
+}

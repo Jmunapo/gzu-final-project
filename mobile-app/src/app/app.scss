@@ -1,0 +1,90 @@
+.splash-grad {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #009900;
+  background: -webkit-linear-gradient(to bottom, #009900, #659e09);
+  background: linear-gradient(to bottom, #009900, #659e09);
+}
+
+.full-button-grad {
+  padding: 14px 33px;
+  font-size: 16px;
+  background: linear-gradient(65deg, color($colors, primary) 0, color($colors, tertiary) 100%);
+  box-shadow: 0 8px 16px rgba(47, 235, 94, 0.25);
+  color: color($colors, light) !important;
+  transition: all .2s linear;
+  display: inline-block;
+  border: 0;
+  line-height: 1.5;
+  border-radius: 4px;
+  font-weight: 400;
+  height: 50px;
+  min-width: 170px;
+  text-transform: capitalize;
+}
+
+.grid-noise {
+  background-image: url('../assets/imgs/grid_noise.png');
+
+  .ion-item:not(.profile-links),
+  .item-md:not(.profile-links) {
+    background: transparent;
+  }
+
+  .item-divider-md {
+    background-color: #FFFF99 !important;
+    border-bottom: 1px solid #bce8f1 !important;
+    color: color($colors, primary);
+  }
+}
+
+.grad-toolbar {
+  .toolbar-background {
+    background: linear-gradient(65deg, #009900 0, #27ca27 100%);
+  }
+}
+
+super-tabs-container {
+  ion-content {
+    margin-top: 58px;
+    background-color: #e3e3e3;
+  }
+}
+
+.footer-seperator {
+  height: 115px !important;
+}
+
+.menu-footer,
+.menu-cont {
+
+  [class^="lni-"],
+  [class*=" lni-"],
+  .item-icon {
+    padding-right: 10px;
+    font-weight: 500;
+    font-size: 1.3em;
+  }
+
+  .futa {
+    font-size: 2em;
+  }
+}
+
+
+
+.menu-bar {
+  .toolbar-title {
+    font-weight: 300;
+    color: color($colors, secondary);
+  }
+}
+
+.put-margin {
+  height: 66px !important;
+}

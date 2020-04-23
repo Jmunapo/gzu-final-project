@@ -1,0 +1,198 @@
+<ion-content no-padding class="grid-noise">
+  <form (ngSubmit)="submit($event)" [formGroup]="persornalDetails" enctype="multipart/form-data">
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input type="text" formControlName="lastname" name="lastname" placeholder="Last Name"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-input type="text" formControlName="firstname" name="firstname" placeholder="First Name(s)"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-datetime formControlName="date_of_birth" name="date_of_birth" placeholder="Date of Birth" min="1900"
+              max="2011" display-format="MMM DD, YYYY">
+            </ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-input formControlName="place_of_birth" type="text" placeholder="Birth Place"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>Gender</ion-label>
+            <ion-select formControlName="sex" class="form-select" interface="popover">
+              <ion-option value="male">Male</ion-option>
+              <ion-option value="female">Female</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>Title</ion-label>
+            <ion-select formControlName="title" class="form-select" interface="popover">
+              <ion-option value="mr">Mr</ion-option>
+              <ion-option value="mrs">Mrs</ion-option>
+              <ion-option value="ms">Ms</ion-option>
+              <ion-option value="miss">Miss</ion-option>
+              <ion-option value="other">Other</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <ion-item>
+            <ion-label>Merital Status</ion-label>
+            <ion-select formControlName="marital_status" class="form-select" interface="popover">
+              <ion-option value="single">Single</ion-option>
+              <ion-option value="married">Married</ion-option>
+              <ion-option value="seperated">Separated</ion-option>
+              <ion-option value="divorced">Divorced</ion-option>
+              <ion-option value="widowed">Widowed</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col col-12>
+          <ion-item>
+            <ion-input formControlName="prev_surname" type="text" placeholder="Previous Surname (If any)"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-6>
+          <ion-item>
+            <ion-input formControlName="national_id_number" type="text" placeholder="National I.D"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-6>
+          <ion-item>
+            <ion-label>Race</ion-label>
+            <ion-select formControlName="race" class="form-select" interface="popover">
+              <ion-option value="black">Black</ion-option>
+              <ion-option value="white">White</ion-option>
+            </ion-select>
+
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input formControlName="nationality" type="text" placeholder="Nationality"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-input formControlName="citizenship" type="text" placeholder="Citizenship"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input formControlName="province" type="text" placeholder="Province"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-input formControlName="religion" type="text" placeholder="Religion"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <ion-item no-lines>
+            <ion-label>Do you have any physical disability?</ion-label>
+            <ion-select [(ngModel)]="no_dis" formControlName="physical_disability" class="form-select"
+              interface="popover" (ionChange)="changeVar('disablity', $event)">
+              <ion-option value="yes">Yes</ion-option>
+              <ion-option value="no">No</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col col-12 *ngIf="dom_vars.disablity === 'yes'">
+          <ion-item>
+            <ion-input formControlName="disability_type" type="text" placeholder="Type of Disability"></ion-input>
+          </ion-item>
+          <hr>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <ion-item no-lines>
+            <ion-label>Are you a war Veteran?</ion-label>
+            <ion-select [(ngModel)]="no_vet" formControlName="war_veteran" class="form-select" interface="popover"
+              (ionChange)="changeVar('veteran', $event)">
+              <ion-option value="yes">Yes</ion-option>
+              <ion-option value="no">No</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col col-12 *ngIf="dom_vars.veteran === 'yes'">
+          <div class="select-file-input" margin>
+            <label for="veteran_proof">
+              <span class="file-types-icons">
+                <i class="zmdi zmdi-file-text mdc-text-light-blue"></i>
+                <i class="zmdi zmdi-collection-pdf mdc-text-red-700"></i>
+              </span>
+
+              <p [hidden]="dom_vars.veteran_proof"><i class="lni-plus size-md"></i> &nbsp; Attach War Veteran Proof
+              </p>
+              <p [hidden]="!dom_vars.veteran_proof">Proof: &nbsp; {{dom_vars.veteran_proof}}</p>
+
+            </label>
+            <input type="file" name="veteran_proof" id="veteran_proof" hidden
+              (change)="fileUpload($event, 'veteran_proof')" formControlName="veteran_proof">
+          </div>
+          <hr>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+    <div class="select-file-input" margin>
+      <label for="personal_documents">
+        <span class="file-types-icons">
+          <i class="zmdi zmdi-file-text mdc-text-light-blue"></i>
+          <i class="zmdi zmdi-collection-pdf mdc-text-red-700"></i>
+        </span>
+
+        <p [hidden]="dom_vars.personal_documents"><i class="lni-plus size-md"></i> &nbsp; Attach File with ID & Birth
+          Certificate</p>
+        <p [hidden]="!dom_vars.personal_documents">Documents: &nbsp; {{dom_vars.personal_documents}}</p>
+
+      </label>
+      <input type="file" name="personal_documents" id="personal_documents" hidden #certFile
+        (change)="fileUpload($event, 'personal_documents')" formControlName="personal_documents">
+    </div>
+    <div class="btn-sbmt" text-center>
+      <button ion-button class="full-button-grad" [disabled]="!persornalDetails.valid">
+        Submit
+      </button>
+    </div>
+
+
+
+  </form>
+  <div class="footer-seperator"></div>
+
+</ion-content>

@@ -1,0 +1,12 @@
+<ion-content no-padding>
+  <ion-list class="options" no-lines>
+    <button ion-item (click)="viewCtrl.dismiss('deposit')" *ngIf="account !== 'all accounts'">
+      <img class="svg-icon" src="assets/icon/wallet.svg" height="30" width="30" item-start>
+      {{ action }}
+    </button>
+    <button ion-item (click)="viewCtrl.dismiss('share')">
+      <i class="lni-share" item-start></i>
+      Share
+    </button>
+  </ion-list>
+</ion-content>

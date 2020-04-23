@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar color="cyan">
+    <ion-title>Gallery</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding class="grid-noise">
+  <page-loader [fill]="fill" *ngIf="!loaded"></page-loader>
+
+  <ion-refresher (ionRefresh)="clearCache($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <section>
+    <ion-card *ngFor="let user of users">
+      <img [src]="user?.img" #myImage style="display: none">
+      <img-loader [src]="user?.img" useImg="true" (load)="onImageLoad($event)" (click)="presentImage(myImage)">
+      </img-loader>
+    </ion-card>
+  </section>
+</ion-content>

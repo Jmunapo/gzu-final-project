@@ -1,0 +1,44 @@
+page-programme-choices-tab {
+  $searchbar-ios-input-search-icon-svg: 'dvdvd';
+  .searchbar-md .searchbar-input {
+    border-radius: 23px !important;
+    font-size: 1.2rem;
+  }
+  .item.item-md .checkbox-md {
+    margin: 9px 5px 9px 4px;
+  }
+  .prog-details {
+    h3 {
+      font-weight: 600;
+    }
+    h4 {
+      font-weight: 500;
+    }
+    p {
+      font-size: 1.3rem;
+    }
+  }
+  .scrll-content {
+    width: 100%;
+    height: calc(100% - 110px);
+    overflow: hidden;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+    .scrll-child {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: -17px;
+      /* Increase/Decrease this value for cross-browser compatibility */
+      overflow-x: scroll;
+    }
+  }
+  .submitSection {
+    margin-top: 58px;
+  }
+
+  .prog-choice-selct {
+    max-width: 100%;
+  }
+}

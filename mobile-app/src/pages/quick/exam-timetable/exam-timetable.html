@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar color="indigo">
+    <ion-title>Exam Timetable</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding class="grid-noise">
+  <page-loader [fill]="fill" *ngIf="!loaded"></page-loader>
+
+  <div class="clearfix feature-not-available" *ngIf="loaded && ttable_notfound" padding>
+    <div class="not-available center">
+      <h2 class="h2">Timetable not available</h2>
+      <img class="block mx-auto" src="assets/icon/ttable.svg" width="300">
+      <ion-note class="p" padding-top>
+        Keep calm, keep studying and re-open this page to check again
+      </ion-note>
+    </div>
+  </div>
+
+  <section *ngIf="loaded && !ttable_notfound">
+    <ion-card *ngFor="let time of ttable">
+      <ion-item class="_module_details" text-wrap>
+        <h2><i class="icon lni-clipboard"></i> {{ time.course_code }}</h2>
+
+        <p no-padding><i class="icon lni-map-marker"></i> {{ time.venue }}</p>
+      </ion-item>
+      <p padding-left> {{ time.date }} &nbsp; &nbsp; <ion-note right class="_sitting">Sitting Position
+          {{ time.position }}
+        </ion-note>
+      </p>
+    </ion-card>
+    <div class="put-margin"></div>
+  </section>
+</ion-content>
+
+<ion-footer no-padding no-border no-shadow text-center *ngIf="loaded && !ttable_notfound">
+  <ion-toolbar transparent>
+    <button ion-button class="full-button-grad" (click)="addToCalendar()">
+      Add to Calendar
+    </button>
+  </ion-toolbar>
+
+</ion-footer>
